@@ -1,7 +1,5 @@
 package org.velezreyes.quiz.question6;
 
-import java.util.HashMap;
-
 public class VendingMachineImpl implements VendingMachine {
 
   private int quarters = 0; // 25 cents
@@ -29,18 +27,20 @@ public class VendingMachineImpl implements VendingMachine {
       throw new NotEnoughMoneyException();
     }
     if (name.equals("ScottCola")) {
-      if (quarters < 3) {
+      if (quarters < ScottCola.price) {
         throw new NotEnoughMoneyException();
       }
-      quarters -= 3;
-      return new DrinkImpl(name, true);
+      Drink drink = new ScottCola();
+      quarters -= ScottCola.price;
+      return drink;
     }
     if (name.equals("KarenTea")) {
-      if (quarters < 4) {
+      if (quarters < KarenTea.price) {
         throw new NotEnoughMoneyException();
       }
-      quarters -= 4;
-      return new DrinkImpl(name, false);
+      Drink drink = new KarenTea();
+      quarters -= KarenTea.price;
+      return drink;
     }
     throw new UnknownDrinkException();
   }
