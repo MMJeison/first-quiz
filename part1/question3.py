@@ -45,8 +45,9 @@ class Oven:
     self.temperature = self.temperature
     
   def get_output(self):
+    self.ingredients.sort()
     if self.temperature == -100:
-      if self.ingredients == ["water", "air"]:
+      if self.ingredients == ["air", "water"]:
         return "snow"
     elif self.temperature == 100:
       if self.ingredients == ["cheese", "dough", "tomato"]:
